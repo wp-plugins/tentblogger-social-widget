@@ -1,4 +1,4 @@
-=== TentBlogger Social Widget - Twitter, Facebook, and RSS For Your WordPress Blog. ===
+=== TentBlogger Social Widget - Twitter, Facebook, and RSS ===
 Contributors: tentblogger
 Tags: social, icons, widgets
 Requires at least: 3.0
@@ -12,6 +12,8 @@ A lightweight, fast loading, and clean looking social widget to capitalize on th
 A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. 
 
 Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http://facebook.com">Facebook</a> Widget, and a RSS Widget all in one with a slick and simple unified appearance. 
+
+<a href="http://tentblogger.com/social-widget/">Read More...</a>
 		
 == Installation ==
 
