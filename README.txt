@@ -22,8 +22,8 @@ Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http:
 
 == Screenshots ==
 
-1. tentblogger social widget admin
-2. tentblogger social widget
+1. TentBlogger Social Widget Admin Panel
+2. TentBlogger Social Widget
 
 == Changelog ==
 
