@@ -23,7 +23,7 @@ Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http:
 == Screenshots ==
 
 1. tentblogger social widget admin
-2. tentblogger social widget content
+2. tentblogger social widget
 
 == Changelog ==
 
