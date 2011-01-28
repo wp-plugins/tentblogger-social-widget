@@ -1,8 +1,9 @@
 <?php
 /*
 Plugin Name: TentBlogger Social Widget
+Plugin URI: http://tentblogger.com/social-widget/
 Description: A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http://facebook.com">Facebook</a> Widget, and a RSS Widget all in one with a slick and simple unified appearance. 
-Version: 1.0
+Version: 1.1
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
@@ -41,7 +42,7 @@ class TentBlogger_Social_Widget extends WP_Widget {
 			'description' => __('A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: Twitter, Facebook, and RSS. Share your tweets from Twitter, your Facebook Profile or Page, and a RSS Feed of your choice. Think of it as a Twitter Widget, Facebook Widget, and a RSS Widget all in one with a slick and simple unified appearance. ', 'tentblogger-social-widget')
 		);		
 		
-		$this->WP_Widget('tentblogger-social-widget', __('TentBlogger Social Widget', 'tentblogger-social-widget'), $widget_ops);
+		$this->WP_Widget('tentblogger-social-widget', __('TentBlogger Social Widget', 'tentblogger-social-widget'), $widget_opts);
 		load_plugin_textdomain('tentblogger-social-widget', false, dirname(plugin_basename( __FILE__ ) ) . '/lang/' );
 		$this->_register_scripts_and_styles();
 		
