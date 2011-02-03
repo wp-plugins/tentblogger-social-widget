@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TentBlogger Social Widget\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-12 21:26-0500\n"
-"PO-Revision-Date: 2011-01-12 21:26-0500\n"
+"POT-Creation-Date: 2011-02-03 08:51-0500\n"
+"PO-Revision-Date: 2011-02-03 08:51-0500\n"
 "Last-Translator: \n"
 "Language-Team: TentBlogger <info@tentblogger.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,22 +16,22 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../tentblogger-social-widget-content.php:3
+#: ../tentblogger-social-widget-content.php:6
 #: ../tentblogger-social-widget-form.php:5
 msgid "Twitter"
 msgstr ""
 
-#: ../tentblogger-social-widget-content.php:4
-#: ../tentblogger-social-widget-form.php:63
+#: ../tentblogger-social-widget-content.php:10
+#: ../tentblogger-social-widget-form.php:64
 msgid "Facebook"
 msgstr ""
 
-#: ../tentblogger-social-widget-content.php:5
-#: ../tentblogger-social-widget-form.php:39
+#: ../tentblogger-social-widget-content.php:14
+#: ../tentblogger-social-widget-form.php:40
 msgid "RSS"
 msgstr ""
 
-#: ../tentblogger-social-widget-content.php:29
+#: ../tentblogger-social-widget-content.php:27
 msgid "Follow Me"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgid "Username (without \"@\")"
 msgstr ""
 
 #: ../tentblogger-social-widget-form.php:12
-#: ../tentblogger-social-widget-form.php:46
+#: ../tentblogger-social-widget-form.php:47
 msgid "Number To Display"
 msgstr ""
 
@@ -48,39 +48,43 @@ msgstr ""
 msgid "Show Avatar?"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:25
+#: ../tentblogger-social-widget-form.php:26
 msgid "No"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:28
+#: ../tentblogger-social-widget-form.php:29
 msgid "Yes"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:42
-msgid "FeedBurner Username"
+#: ../tentblogger-social-widget-form.php:43
+msgid "FeedBurner Username (<a href=\"http://feedburner.google.com/fb/a/myfeeds\" target=\"_blank\">Find Yours</a>)"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:66
-msgid "Badge Code (<a href=\"http://www.facebook.com/badges/profile.php\" target=\"_blank\">Get Yours</a>)"
+#: ../tentblogger-social-widget-form.php:67
+msgid "Badge Code (<a href=\"http://www.facebook.com/badges/profile.php\" target=\"_blank\">Profile</a>, <a href=\"https://developers.facebook.com/docs/reference/plugins/like-box\" target=\"_blank\">Fan Page</a>)"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:77
+#: ../tentblogger-social-widget-form.php:78
 msgid "Display Options"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:82
+#: ../tentblogger-social-widget-form.php:83
 msgid "Use Fade Effect on Tabs?"
 msgstr ""
 
-#: ../tentblogger-social-widget-form.php:88
+#: ../tentblogger-social-widget-form.php:89
 msgid "Display TentBlogger Banner?"
 msgstr ""
 
-#: ../tentblogger-social-widget.php:41
-msgid "A lightweight, fast loading and clean looking social widget to capitalize on the \"Big 3\" on your blog: Twitter, Facebook, and RSS. Share your tweets from Twitter, your Facebook Profile or Page, and a RSS Feed of your choice. Think of it as a Twitter Widget, Facebook Widget, and a RSS Widget all in one with a slick and simple unified appearance. "
+#: ../tentblogger-social-widget.php:42
+msgid "A Twitter Widget, Facebook Widget, and a RSS Widget all in one with a slick and simple unified appearance. "
 msgstr ""
 
-#: ../tentblogger-social-widget.php:44
+#: ../tentblogger-social-widget.php:45
 msgid "TentBlogger Social Widget"
+msgstr ""
+
+#: ../tentblogger-social-widget.php:159
+msgid "Link"
 msgstr ""
 
