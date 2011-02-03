@@ -1,0 +1,7 @@
+/*
+Plugin Name: TentBlogger Social Widget
+Author URI: http://tentblogger.com
+*/
+.tentblogger-admin-wrapper fieldset { border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; }
+.tentblogger-admin-wrapper legend { font-weight: bold; }
+.tentblogger-admin-wrapper input { margin-bottom: 0.5em !important; }
