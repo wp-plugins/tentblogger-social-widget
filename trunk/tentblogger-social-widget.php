@@ -3,7 +3,7 @@
 Plugin Name: TentBlogger Social Widget
 Plugin URI: http://tentblogger.com/social-widget/
 Description: A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http://facebook.com">Facebook</a> Widget, and a RSS Widget all in one with a slick and simple unified appearance. 
-Version: 1.1
+Version: 1.2
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
@@ -39,7 +39,7 @@ class TentBlogger_Social_Widget extends WP_Widget {
 	
 		$widget_opts = array (
 			'classname' => 'tentblogger-social-widget',
-			'description' => __('A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: Twitter, Facebook, and RSS. Share your tweets from Twitter, your Facebook Profile or Page, and a RSS Feed of your choice. Think of it as a Twitter Widget, Facebook Widget, and a RSS Widget all in one with a slick and simple unified appearance. ', 'tentblogger-social-widget')
+			'description' => __('A Twitter Widget, Facebook Widget, and a RSS Widget all in one with a slick and simple unified appearance. ', 'tentblogger-social-widget')
 		);		
 		
 		$this->WP_Widget('tentblogger-social-widget', __('TentBlogger Social Widget', 'tentblogger-social-widget'), $widget_opts);
@@ -156,7 +156,7 @@ class TentBlogger_Social_Widget extends WP_Widget {
 					$tweet_str .= '<img src="' . $user->profile_image_url . '" alt="' . $twitter_username . '" />';
 				} // end if
 				$tweet_str .= html_entity_decode(preg_replace("/".strtolower($twitter_username).": /", "", $tweet->get_title()));
-				$tweet_str .= ' <a href="' . $tweet->get_permalink() . '" target="_blank">Link</a>';
+				$tweet_str .= ' <a href="' . $tweet->get_permalink() . '" target="_blank">' . __('Link', 'tentblogger-social-widget') . '</a>';
 			$tweet_str .= '</li>';
 			echo $tweet_str;
 		} // end foreach
