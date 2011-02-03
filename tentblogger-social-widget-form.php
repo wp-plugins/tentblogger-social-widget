@@ -20,14 +20,15 @@
 		</select>
 		<label for="show_twitter_avatar">
 			<?php _e('Show Avatar?', 'tentblogger-social-widget'); ?>
-			<select id="<?php $this->_gf('show_twitter_avatar', 'id'); ?>" name="<?php $this->_gf('show_twitter_avatar', 'name'); ?>" class="widefat">
-					<option <?php $this->_is_selected($instance, 'show_twitter_avatar', 'no'); ?> value="no">
-						<?php _e('No', 'tentblogger-social-widget'); ?>
-					</option>
-					<option <?php $this->_is_selected($instance, 'show_twitter_avatar', 'yes'); ?> value="yes">
-						<?php _e('Yes', 'tentblogger-social-widget'); ?>
-					</option>
-			</select>
+		</label>
+		<select id="<?php $this->_gf('show_twitter_avatar', 'id'); ?>" name="<?php $this->_gf('show_twitter_avatar', 'name'); ?>" class="widefat">
+			<option <?php $this->_is_selected($instance, 'show_twitter_avatar', 'no'); ?> value="no">
+				<?php _e('No', 'tentblogger-social-widget'); ?>
+			</option>
+			<option <?php $this->_is_selected($instance, 'show_twitter_avatar', 'yes'); ?> value="yes">
+				<?php _e('Yes', 'tentblogger-social-widget'); ?>
+			</option>
+		</select>
 	</fieldset>
 </div>
 <!-- /Twitter -->
@@ -39,7 +40,7 @@
 			<?php _e('RSS', 'tentblogger-social-widget'); ?>
 		</legend>
 		<label for="feedburner_username">
-			<?php _e('FeedBurner Username', 'tentblogger-social-widget'); ?>
+			<?php _e('FeedBurner Username (<a href="http://feedburner.google.com/fb/a/myfeeds" target="_blank">Find Yours</a>)', 'tentblogger-social-widget'); ?>
 		</label>
 		<input type="text" value="<?php $this->_ae($feedburner_username); ?>" id="<?php $this->_gf('feedburner_username', 'id'); ?>" name="<?php $this->_gf('feedburner_username', 'name'); ?>" class="widefat" />
 		<label for="feed_count">
@@ -63,7 +64,7 @@
 			<?php _e('Facebook', 'tentblogger-social-widget'); ?>
 		</legend>
 		<label for="facebook_id">
-			<?php _e('Badge Code (<a href="http://www.facebook.com/badges/profile.php" target="_blank">Get Yours</a>)', 'tentblogger-social-widget'); ?>
+			<?php _e('Badge Code (<a href="http://www.facebook.com/badges/profile.php" target="_blank">Profile</a>, <a href="https://developers.facebook.com/docs/reference/plugins/like-box" target="_blank">Fan Page</a>)', 'tentblogger-social-widget'); ?>
 		</label>
 		<input type="text" value="<?php $this->_ae($facebook_badge); ?>" id="<?php $this->_gf('facebook_badge', 'id'); ?>" name="<?php $this->_gf('facebook_badge', 'name'); ?>" class="widefat" />
 	</fieldset>
