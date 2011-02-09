@@ -3,7 +3,7 @@ Contributors: tentblogger
 Tags: social, icons, widgets
 Requires at least: 3.0
 Tested up to: 3.0.4
-Stable tag: 1.3
+Stable tag: 1.4
 
 A lightweight, fast loading, and clean looking social widget to capitalize on the "Big 3" on your blog: Twitter, Facebook, and RSS.
 
@@ -28,6 +28,9 @@ Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http:
 2. TentBlogger Social Widget
 
 == Changelog ==
+
+= 1.4 =
+* Increased the Twitter feed caching lifetime to pull slightly less frequently. Some users were experiencing a timeout.
 
 = 1.3 =
 * Decreased Twitter feed caching lifetime to pull the feed more frequently
