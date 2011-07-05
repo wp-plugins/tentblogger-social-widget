@@ -3,7 +3,7 @@ Contributors: tentblogger
 Tags: social, icons, widgets
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 2.0
+Stable tag: 2.1
 
 A lightweight, fast loading, and clean looking social widget to capitalize on the "Big 3" on your blog: Twitter, Facebook, and RSS.
 
@@ -28,6 +28,9 @@ Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http:
 2. TentBlogger Social Widget
 
 == Changelog ==
+
+= 2.1 =
+* Resolving a repository conflict
 
 = 2.0 =
 * 3.2 compatibility
