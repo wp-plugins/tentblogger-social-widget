@@ -1,4 +1,4 @@
-<![CDATA[ TentBlogger Social Widget 1.4 ]]>
+<![CDATA[ TentBlogger Social Widget 2.0 ]]>
 <!-- Tabs -->
 <div class="tentblogger-tabs">
 
