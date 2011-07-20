@@ -3,7 +3,7 @@
 Plugin Name: TentBlogger Social Widget
 Plugin URI: http://tentblogger.com/social-widget/
 Description: A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http://facebook.com">Facebook</a> Widget, and a RSS Widget all in one with a slick and simple unified appearance. 
-Version: 2.1
+Version: 3.0
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
@@ -71,10 +71,11 @@ class TentBlogger_Social_Widget extends WP_Widget {
 		$feedburner_username = empty($instance['feedburner_username']) ? '' : apply_filters('feedburner_username', $instance['feedburner_username']);
 		$feed_count = empty($instance['feed_count']) ? '' : apply_filters('feedburner_username', $instance['feed_count']);		
 		$facebook_badge = empty($instance['facebook_badge']) ? '' : apply_filters('facebook_id', $instance['facebook_badge']);
+    $use_theme = empty($instance['use_theme']) ? '' : apply_filters('facebook_id', $instance['use_theme']);
 		$use_visual_effects = empty($instance['use_visual_effects']) ? '' : apply_filters('use_visual_effects', $instance['use_visual_effects']);
 		$display_tentblogger_image = empty($instance['display_tentblogger_image']) ? '' : apply_filters('use_visual_effects', $instance['display_tentblogger_image']);
-		
-		// Grab the HTML content for the content
+    
+		// Grab the HTML content
 		include('tentblogger-social-widget-content.php');
 		
 		echo $after_widget;
@@ -97,6 +98,7 @@ class TentBlogger_Social_Widget extends WP_Widget {
 		$instance['feedburner_username'] = $this->_strip($new_instance, 'feedburner_username');
 		$instance['feed_count'] = $this->_strip($new_instance, 'feed_count');
 		$instance['facebook_badge'] = $new_instance['facebook_badge'];
+    $instance['use_theme'] = $new_instance['use_theme'];
 		$instance['use_visual_effects'] = $new_instance['use_visual_effects'];
 		$instance['display_tentblogger_image'] = $new_instance['display_tentblogger_image'];
 		
@@ -110,7 +112,7 @@ class TentBlogger_Social_Widget extends WP_Widget {
 	 * @instance	The array of keys and values for the widget.
 	 */
 	function form($instance) {
-	
+  
 		$instance = wp_parse_args(
 			(array)$instance,
 			array(	
@@ -118,6 +120,7 @@ class TentBlogger_Social_Widget extends WP_Widget {
 				'tweet_count' => '',
 				'feedburner_username' => '',
 				'feed_count' => '',
+        'use_theme' => '',
 				'facebook_badge' => '',
 				'use_visual_effects' => ''
 			)
@@ -129,9 +132,10 @@ class TentBlogger_Social_Widget extends WP_Widget {
 		$feedburner_username = $this->_strip($instance, 'feedburner_username');
 		$feed_count = $this->_strip($instance, 'feed_count');
 		$facebook_badge = $instance['facebook_badge'];
+    $use_theme = $instance['use_theme'];
 		$use_visual_effects = $instance['use_visual_effects'];
 		$display_tentblogger_image = $instance['display_tentblogger_image'];
-		
+
 		// Grab the HTML content for the form
 		include('tentblogger-social-widget-form.php'); 
 		
@@ -149,18 +153,38 @@ class TentBlogger_Social_Widget extends WP_Widget {
 	 * @tweet_count					The number of tweets to display.
 	 */
 	public function get_twitter_feed($twitter_username, $show_twitter_avatar, $tweet_count) {
+  
 		$feed = fetch_feed('http://twitter.com/statuses/user_timeline/' . $twitter_username . '.rss');
 		$user = json_decode($this->curl('http://twitter.com/users/show/' . $twitter_username . '.json'));
-		foreach($feed->get_items(0, $tweet_count) as $tweet) {
-			$tweet_str = '<li>';
-				if($show_twitter_avatar == "yes") {
-					$tweet_str .= '<img src="' . $user->profile_image_url . '" alt="' . $twitter_username . '" />';
-				} // end if
-				$tweet_str .= html_entity_decode(preg_replace("/".strtolower($twitter_username).": /", "", $tweet->get_title()));
-				$tweet_str .= ' <a href="' . $tweet->get_permalink() . '" target="_blank">' . __('Link', 'tentblogger-social-widget') . '</a>';
-			$tweet_str .= '</li>';
-			echo $tweet_str;
-		} // end foreach
+    
+    $tweets = $feed->get_items(0, $tweet_count);
+    if($tweets == null || count($tweets) == 0) {
+    
+      $options = get_option('tentblogger-social-widget-cache');
+      echo $options['twitter'];
+    
+    } else {
+    
+      $tweet_cache = '';
+      foreach($tweets as $tweet) {
+        $tweet_str = '<li>';
+          if($show_twitter_avatar == "yes") {
+            $tweet_str .= '<img src="' . $user->profile_image_url . '" alt="' . $twitter_username . '" />';
+          } // end if
+          $tweet_str .= html_entity_decode(preg_replace("/".strtolower($twitter_username).": /", "", $tweet->get_title()));
+          $tweet_str .= ' <a href="' . $tweet->get_permalink() . '" target="_blank">' . __('Link', 'tentblogger-social-widget') . '</a>';
+        $tweet_str .= '</li>';
+        $tweet_cache .= $tweet_str;
+        echo $tweet_str;
+      } // end foreach
+      
+      // serialize the tweets in case twitter goes down
+      $options = get_option('tentblogger-social-widget-cache');
+      $options['twitter'] = $tweet_cache;      
+      update_option('tentblogger-social-widget-cache', $options);  
+      
+    } // end if/else
+    
 	} // end get_twitter_feed
 	
 	/**
@@ -170,15 +194,33 @@ class TentBlogger_Social_Widget extends WP_Widget {
 	 * @feed_count						The number of posts to display
 	 */
 	public function get_feedburner_feed($feedburner_username, $feed_count) {
+  
 		$feed = fetch_feed('http://feeds.feedburner.com/' . $feedburner_username);
 		$max_items = $feed->get_item_quantity($feed_count);
 		$posts = $feed->get_items(0, $max_items);
-		if(sizeof($posts) > 0) {
+
+		if($posts == null || count($posts) < 0) {
+    
+      $options = get_option('tentblogger-social-widget-cache');
+      echo $options['feedburner'];
+      
+		} else {
+      
+      $feed_cache = '';
 			foreach($posts as $post) {
 				$feed_str = '<li><a href="' . $post->get_permalink() . '" target="_blank" title="' . $post->get_title() . '">' . $post->get_title() . '</a></li>';
+        $feed_cache .= $feed_str;
 				echo $feed_str;
 			} // end foreach
-		} // end if
+      
+      // serialize the feed in case feedburner can't be read
+      $options = get_option('tentblogger-social-widget-cache');
+      $options['feedburner'] = $feed_cache;      
+      update_option('tentblogger-social-widget-cache', $options);  
+      
+    } // end if/else
+    
+    
 	} // end get_feedburner_feed
 	
 	/*--------------------------------------------------*/
@@ -190,16 +232,30 @@ class TentBlogger_Social_Widget extends WP_Widget {
 	 * public facing site.
 	 */
 	private function _register_scripts_and_styles() {
-	
+  
+    $use_theme = false;
+    $options = get_option('widget_tentblogger-social-widget');
+    foreach($options as $option) {
+      if($option['use_theme'] && $option['use_theme'] == 'on') {
+        $use_theme = true;
+      } // end if
+    } // end foreach
+    
 		if(is_admin()) {
 			$this->_load_file('tentblogger-social-admin-styles', '/tentblogger-social-widget/css/tentblogger-social-widget-admin.css');
 		} else {
-			wp_enqueue_script("jquery");
+			
+      wp_enqueue_script("jquery");
 			$this->_load_file('tentblogger-social-widget-styles', '/tentblogger-social-widget/css/tentblogger-social-widget.css');
+      
+      if($use_theme) {
+        $this->_load_file('tentblogger-social-widget-theme-style', '/tentblogger-social-widget/css/theme.css');  
+      } // end if
+      
       $this->_load_file('tentblogger-social-widget-styles', '/tentblogger-social-widget/css/custom.css');
 			$this->_load_file('tentblogger-social-widget-script', '/tentblogger-social-widget/javascript/tentblogger-social-widget.js', true);
+      
 		} // end if
-		
 	} // end register_scripts_and_styles
 
 	/**

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TentBlogger Social Widget\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-03 08:50-0500\n"
-"PO-Revision-Date: 2011-02-03 08:50-0500\n"
+"POT-Creation-Date: 2011-07-20 18:09-0500\n"
+"PO-Revision-Date: 2011-07-20 18:09-0500\n"
 "Last-Translator: \n"
 "Language-Team: TentBlogger <info@tentblogger.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,22 +16,22 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../tentblogger-social-widget-content.php:6
+#: ../tentblogger-social-widget-content.php:5
 #: ../tentblogger-social-widget-form.php:5
 msgid "Twitter"
 msgstr ""
 
-#: ../tentblogger-social-widget-content.php:10
+#: ../tentblogger-social-widget-content.php:9
 #: ../tentblogger-social-widget-form.php:64
 msgid "Facebook"
 msgstr ""
 
-#: ../tentblogger-social-widget-content.php:14
+#: ../tentblogger-social-widget-content.php:13
 #: ../tentblogger-social-widget-form.php:40
 msgid "RSS"
 msgstr ""
 
-#: ../tentblogger-social-widget-content.php:27
+#: ../tentblogger-social-widget-content.php:26
 msgid "Follow Me"
 msgstr ""
 
@@ -76,6 +76,10 @@ msgstr ""
 msgid "Display TentBlogger Banner?"
 msgstr ""
 
+#: ../tentblogger-social-widget-form.php:95
+msgid "Use Default Theme?"
+msgstr ""
+
 #: ../tentblogger-social-widget.php:42
 msgid "A Twitter Widget, Facebook Widget, and a RSS Widget all in one with a slick and simple unified appearance. "
 msgstr ""
@@ -84,7 +88,7 @@ msgstr ""
 msgid "TentBlogger Social Widget"
 msgstr ""
 
-#: ../tentblogger-social-widget.php:159
+#: ../tentblogger-social-widget.php:175
 msgid "Link"
 msgstr ""
 

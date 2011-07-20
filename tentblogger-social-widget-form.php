@@ -89,6 +89,12 @@
 				<?php _e('Display TentBlogger Banner?', 'tentblogger-social-widget'); ?>
 			</label>
 		</div>
+    <div>
+			<input type="checkbox" id="<?php $this->_gf('use_theme', 'id'); ?>" name="<?php $this->_gf('use_theme', 'name'); ?>" <?php if($instance['use_theme'] == 'on') { echo 'checked="checked"'; } ?> />
+			<label for="use_visual_effects">
+				<?php _e('Use Default Theme?', 'tentblogger-social-widget'); ?>
+			</label>
+		</div>
 	</fieldset>
 </div>
 <!-- /Display Options -->
