@@ -3,7 +3,7 @@
 Plugin Name: TentBlogger Social Widget
 Plugin URI: http://tentblogger.com/social-widget/
 Description: A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http://facebook.com">Facebook</a> Widget, and a RSS Widget all in one with a slick and simple unified appearance. 
-Version: 3.1
+Version: 3.2
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
@@ -157,31 +157,42 @@ class TentBlogger_Social_Widget extends WP_Widget {
 		$feed = fetch_feed('http://twitter.com/statuses/user_timeline/' . $twitter_username . '.rss');
 		$user = json_decode($this->curl('http://twitter.com/users/show/' . $twitter_username . '.json'));
     
-    $tweets = $feed->get_items(0, $tweet_count);
-    if($tweets == null || count($tweets) == 0) {
+		// Make sure there isn't a problem with the feed
+		if( is_wp_error( $feed) ) {		
+			if( ( $options = get_option('tentblogger-social-widget-cache') ) ) {
+				echo $options['twitter'];			
+			} else {
+				echo "There was a problem retrieving your Twitter feed.";
+			} // end if/else
+		} else {
     
-      $options = get_option('tentblogger-social-widget-cache');
-      echo $options['twitter'];
-    
-    } else {
-    
-      $tweet_cache = '';
-      foreach($tweets as $tweet) {
-        $tweet_str = '<li>';
-          if($show_twitter_avatar == "yes") {
-            $tweet_str .= '<img src="' . $user->profile_image_url . '" alt="' . $twitter_username . '" />';
-          } // end if
-          $tweet_str .= html_entity_decode(preg_replace("/".strtolower($twitter_username).": /", "", $tweet->get_title()));
-          $tweet_str .= ' <a href="' . $tweet->get_permalink() . '" target="_blank">' . __('Link', 'tentblogger-social-widget') . '</a>';
-        $tweet_str .= '</li>';
-        $tweet_cache .= $tweet_str;
-        echo $tweet_str;
-      } // end foreach
+		    $tweets = $feed->get_items(0, $tweet_count);
+		    if($tweets == null || count($tweets) == 0) {
+		    
+		      $options = get_option('tentblogger-social-widget-cache');
+		      echo $options['twitter'];
+		    
+		    } else {
+		    
+		      $tweet_cache = '';
+		      foreach($tweets as $tweet) {
+		        $tweet_str = '<li>';
+		          if($show_twitter_avatar == "yes") {
+		            $tweet_str .= '<img src="' . $user->profile_image_url . '" alt="' . $twitter_username . '" />';
+		          } // end if
+		          $tweet_str .= html_entity_decode(preg_replace("/".strtolower($twitter_username).": /", "", $tweet->get_title()));
+		          $tweet_str .= ' <a href="' . $tweet->get_permalink() . '" target="_blank">' . __('Link', 'tentblogger-social-widget') . '</a>';
+		        $tweet_str .= '</li>';
+		        $tweet_cache .= $tweet_str;
+		        echo $tweet_str;
+		      } // end foreach
+		      
+		      // serialize the tweets in case twitter goes down
+		      $options = get_option('tentblogger-social-widget-cache');
+		      $options['twitter'] = $tweet_cache;      
+		      update_option('tentblogger-social-widget-cache', $options);  
       
-      // serialize the tweets in case twitter goes down
-      $options = get_option('tentblogger-social-widget-cache');
-      $options['twitter'] = $tweet_cache;      
-      update_option('tentblogger-social-widget-cache', $options);  
+	      } // end if
       
     } // end if/else
     
@@ -233,13 +244,15 @@ class TentBlogger_Social_Widget extends WP_Widget {
 	 */
 	private function _register_scripts_and_styles() {
   
-    $use_theme = false;
-    $options = get_option('widget_tentblogger-social-widget');
-    foreach($options as $option) {
-      if($option['use_theme'] && $option['use_theme'] == 'on') {
-        $use_theme = true;
-      } // end if
-    } // end foreach
+	    $use_theme = false;
+	    $options = get_option('widget_tentblogger-social-widget');
+	    if( null != $options ) {
+		    foreach($options as $option) {
+		      if($option['use_theme'] && $option['use_theme'] == 'on') {
+		        $use_theme = true;
+		      } // end if
+		    } // end foreach
+	    } 
     
 		if(is_admin()) {
 			$this->_load_file('tentblogger-social-admin-styles', '/tentblogger-social-widget/css/tentblogger-social-widget-admin.css');

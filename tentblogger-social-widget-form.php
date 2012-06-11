@@ -67,6 +67,7 @@
 			<?php _e('Badge Code (<a href="http://www.facebook.com/badges/profile.php" target="_blank">Profile</a>, <a href="https://developers.facebook.com/docs/reference/plugins/like-box" target="_blank">Fan Page</a>)', 'tentblogger-social-widget'); ?>
 		</label>
 		<input type="text" value="<?php $this->_ae($facebook_badge); ?>" id="<?php $this->_gf('facebook_badge', 'id'); ?>" name="<?php $this->_gf('facebook_badge', 'name'); ?>" class="widefat" />
+		<span class="description"><?php _e( "If you're using a Fan Page, use the iFrame variant of the badge code.", 'tentblogger-social-widget' ); ?></span>
 	</fieldset>
 </div>
 <!-- /Facebook -->
