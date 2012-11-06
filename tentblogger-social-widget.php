@@ -3,7 +3,7 @@
 Plugin Name: TentBlogger Social Widget
 Plugin URI: http://tentblogger.com/social-widget/
 Description: A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http://facebook.com">Facebook</a> Widget, and a RSS Widget all in one with a slick and simple unified appearance. 
-Version: 3.2
+Version: 3.3
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
