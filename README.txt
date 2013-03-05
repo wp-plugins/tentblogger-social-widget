@@ -3,13 +3,13 @@ Contributors: tentblogger
 Tags: social, icons, widgets
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 3.3
+Stable tag: 3.4
 
-<strong>Note:</strong> This plugin is no longer under active development. If you're interested in maintaining it, please <a href="http://tentblogger.com/about/">contact me</a>.
-
-A lightweight, fast loading, and clean looking social widget to capitalize on the "Big 3" on your blog: Twitter, Facebook, and RSS.
+Note: This plugin is no longer under active development. If you're interested in maintaining it, please contact me.
 
 == Description ==
+
+A lightweight, fast loading, and clean looking social widget to capitalize on the "Big 3" on your blog: Twitter, Facebook, and RSS.
 
 A lightweight, fast loading and clean looking social widget to capitalize on the "Big 3" on your blog: <a href="http://twitter.com">Twitter</a>, <a href="http://facebook.com">Facebook</a>, and RSS. Share your tweets from <a href="http://twitter.com">Twitter</a>, your <a href="http://facebook.com">Facebook</a> Profile or Page, and a RSS Feed of your choice. 
 
@@ -31,7 +31,7 @@ Think of it as a <a href="http://twitter.com">Twitter</a> Widget, <a href="http:
 
 == Changelog ==
 
-= 3.3 =
+= 3.4 =
 * Ending development on the plugin
 
 = 3.2 =
